@@ -35,7 +35,7 @@ const resolveOutline = async (pdf: any, items: any[]): Promise<TocItem[]> => {
     return resolvedItems;
 };
 
-export const parsePdf = async (file: File): Promise<PdfData> => {
+export const parsePdf = async (file: File, locale: string = 'en'): Promise<PdfData> => {
     const arrayBuffer = await file.arrayBuffer();
     const loadingTask = window.pdfjsLib.getDocument(new Uint8Array(arrayBuffer));
     const pdf = await loadingTask.promise;
@@ -47,7 +47,7 @@ export const parsePdf = async (file: File): Promise<PdfData> => {
     // This provides much better sentence detection than regex, handling abbreviations (Mr., Dr.) correctly.
     const segmenter = typeof Intl !== 'undefined' && 'Segmenter' in Intl 
         // @ts-ignore: TypeScript might not have Intl.Segmenter in older lib definitions
-        ? new Intl.Segmenter('en', { granularity: 'sentence' }) 
+        ? new Intl.Segmenter(locale, { granularity: 'sentence' }) 
         : null;
 
     for (let i = 1; i <= pdf.numPages; i++) {

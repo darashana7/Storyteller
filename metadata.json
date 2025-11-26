@@ -1,5 +1,7 @@
 {
   "name": "Storyteller Pro",
   "description": "A premium PDF reader application that converts documents into spoken audio using browser capabilities or high-definition OpenAI TTS.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }

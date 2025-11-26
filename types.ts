@@ -20,6 +20,9 @@ export interface AppSettings {
     googleVoice: string; // 'Puck', 'Kore', etc.
     rate: number;
     pitch: number; // Only for browser
+    darkMode: boolean;
+    sourceLanguage: string; // 'en', 'es', etc.
+    targetLanguage: string; // 'en', 'es', etc.
 }
 
 export interface PlaybackState {
